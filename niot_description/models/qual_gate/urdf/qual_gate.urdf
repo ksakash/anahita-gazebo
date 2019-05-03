@@ -1,20 +1,20 @@
 <robot
-  name="gate">
+  name="qual_gate">
   <link
-    name="gate">
+    name="qual_gate">
     <inertial>
       <origin
-        xyz="1.5005E-07 -0.97612 -0.52269"
+        xyz="2.3965E-07 -1.3189 1.0005"
         rpy="0 0 0" />
       <mass
-        value="6.1039" />
+        value="18.875" />
       <inertia
-        ixx="2.97205828183005"
-        ixy="-5.96332505457148E-08"
-        ixz="-3.9578228645324E-07"
-        iyy="2.10863329329738"
-        iyz="-0.795459454826337"
-        izz="0.865396659359463" />
+        ixx="22.8065287480022"
+        ixy="-0.000111681399767615"
+        ixz="-0.000119421608847911"
+        iyy="14.6642752487651"
+        iyz="0.00211707599867418"
+        izz="8.15176829177702" />
     </inertial>
     <visual>
       <origin
@@ -22,12 +22,12 @@
         rpy="1.5707963267949 0 0" />
       <geometry>
         <mesh
-          filename="package://gate/meshes/gate.STL" />
+          filename="package://qual_gate/meshes/qual_gate.dae" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="1 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -36,13 +36,10 @@
         rpy="1.5707963267949 0 0" />
       <geometry>
         <mesh
-          filename="package://gate/meshes/gate.STL" />
+          filename="package://qual_gate/meshes/qual_gate.STL" />
       </geometry>
     </collision>
   </link>
-  <gazebo reference="gate">
-    <material>Gazebo/Red</material>
-  </gazebo>
   <gazebo>
     <static>true</static>
   </gazebo>
