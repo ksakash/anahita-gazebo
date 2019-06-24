@@ -16,14 +16,14 @@
 
 #include <eigen3/Eigen/Core>
 #include <eigen3/Eigen/Geometry>
-#include <std_msgs/Int32.h>
 #include <std_msgs/Float32.h>
-#include <hyperion_msgs/Thrust.h>
+#include <geometry_msgs/Point.h>
 
 #include <iostream>
 #include <string>
 #include <vector>
 #include <map>
+#include <cmath>
 
 namespace gazebo
 {
@@ -35,39 +35,11 @@ namespace gazebo
         public: virtual void Update();
         public: void QueueThread();
 
-        public: void thrustCB (const hyperion_msgs::ThrustConstPtr&);
-
         // Pointer to the model
         private: physics::ModelPtr model_;
 
         // SDF root element
         private: sdf::ElementPtr sdf_;
-
-        // total mass
-        private: double mass_ = 0;
-
-        // Pointer to links
-        protected: gazebo::physics::LinkPtr north_link_;
-        protected: gazebo::physics::LinkPtr south_link_;
-        protected: gazebo::physics::LinkPtr east_link_;
-        protected: gazebo::physics::LinkPtr west_link_;
-        protected: gazebo::physics::LinkPtr south_west_link_;
-        protected: gazebo::physics::LinkPtr south_east_link_;
-        protected: gazebo::physics::LinkPtr north_west_link_;
-        protected: gazebo::physics::LinkPtr north_east_link_;
-
-        // Pointer to the base link
-        protected: gazebo::physics::LinkPtr baseLink;
-
-        // \brief: to store pwm sent from controller
-        protected: double pwm_north_ = 0;
-        protected: double pwm_south_ = 0;
-        protected: double pwm_east_ = 0;
-        protected: double pwm_west_ = 0;
-        protected: double pwm_north_east_ = 0;
-        protected: double pwm_north_west_ = 0;
-        protected: double pwm_south_west_ = 0;
-        protected: double pwm_south_east_ = 0;
 
         // ROS node
         private: std::unique_ptr<ros::NodeHandle> nh_;
@@ -81,6 +53,9 @@ namespace gazebo
         // Listen to the update event
         // The event is broadcasted every simulation iteration
         private: event::ConnectionPtr update_connection_;
+
+        private: Eigen::Vector3d gate_center;
+        private: geometry_msgs::Point vehicle_pose;
     };
 }
 

@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   hyperion_msgs
+  geometry_msgs
 )
 find_package(gazebo REQUIRED)
 
@@ -80,7 +81,7 @@ endif()
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
-  std_msgs hyperion_msgs
+  geometry_msgs std_msgs hyperion_msgs 
 )
 
 ################################################
@@ -115,7 +116,7 @@ generate_messages(
 catkin_package(
   INCLUDE_DIRS include  
   LIBRARIES thruster_plugin
-  CATKIN_DEPENDS roscpp std_msgs hyperion_msgs
+  CATKIN_DEPENDS roscpp std_msgs hyperion_msgs geometry_msgs 
   # DEPENDS system_lib
 )
 
